@@ -18,8 +18,7 @@ suites:
   - name: default
     run_list:
       - recipe[lxctests::install_chef_provisioning]
-      - recipe[lxctests::simple]
-      - recipe[lxctests::simple2]
+      - recipe[lxctests::simple3]
     attributes: {
       apt: {
         compile_time_update: true
@@ -28,6 +27,7 @@ suites:
         compile_time: true
       },
       lxctests: {
+        numfiles: 10,
         use_chef_provisioning_head: false,
         use_chef_provisioning_lxc_head: true
       }
