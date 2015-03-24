@@ -3,9 +3,12 @@ driver:
   name: vagrant
   customize:
     memory: 4096
+    cpus: 2
 
 provisioner:
   name: chef_solo
+  require_chef_omnibus: latest
+  chef_omnibus_install_options: -d /tmp/vagrant-cache/vagrant_omnibus
 
 platforms:
   - name: ubuntu-12.04
@@ -23,6 +26,9 @@ suites:
       },
       build-essential: {
         compile_time: true
+      },
+      lxctests: {
+        use_chef_provisioning_head: false,
+        use_chef_provisioning_lxc_head: true
       }
     }
-

@@ -8,10 +8,7 @@ if node['platform'] == 'ubuntu' && node['platform_version'].to_i == 12
   end.run_action(:add)
 end
 
-package 'lxc-dev' do
-  action :nothing
-end.run_action(:upgrade)
-
-package 'lxc-templates' do
+package 'lxc support packages' do
+  package_name %w( bridge-utils cgroup-bin haveged lxc-dev lxc-templates )
   action :nothing
 end.run_action(:upgrade)
